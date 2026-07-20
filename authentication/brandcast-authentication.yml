@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.brandcast.io/
+docs: https://developer.brandcast.io/
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  oauth2_flows: []
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter_name: x-api-key
+  transport: https-only
+  description: >-
+    Brandcast API requests are authenticated with an API key sent in the
+    x-api-key HTTP header over HTTPS. Keys are issued by Brandcast and are
+    tied to the developer's Brandcast account. No OAuth or OpenID Connect
+    flow is documented for the public API.
+  sources:
+  - https://developer.brandcast.io/
+notes: >-
+  Derived by searching the Brandcast developer documentation
+  (developer.brandcast.io, mirrored at api.brandcast.io). The provider does
+  not publish an OpenAPI/Swagger specification, so this profile is captured
+  from the documented authentication guidance rather than derived from a spec.
