@@ -1,8 +1,29 @@
 aid: brandcast
 name: Brandcast
-description: 'Brandcast is a company surfaced as a portfolio company of shasta-ventures and added to the
-  API Evangelist network as a stub for enrichment. Sector: enterprise-software. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  Brandcast is a no-code digital customer experience and website platform,
+  founded in 2013 and backed by Shasta Ventures, that fuses web design,
+  content creation, and brand asset management into a single system. Business
+  and marketing teams use its Design Studio to build and maintain branded
+  websites, sales proposals, brochures, and content programs, with Salesforce
+  integration for personalized, trackable sites. The Brandcast API opens the
+  Design Studio to developers to create websites from templates and update
+  site content, authenticated with an API key sent in the x-api-key header
+  over HTTPS. Brandcast's website product has since been rebranded as "Sites"
+  and joined Vev; the developer API portal remains at developer.brandcast.io.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://brandcast-cdn.global.ssl.fastly.net/61c3bb24-acd1-4c34-a5e0-3af04a2afb9a/71efcf85-6914-4a7e-9e50-1667c8d865f7/3c7a4af9ee3e6c75f4a0153bd866a9d9/brandcast.png
 url: https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +33,58 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Enterprise Software
-apis: []
+- No-Code
+- Website Builder
+- Content Management
+- Digital Experience
+- Web Design
+- Brand Management
+apis:
+- name: Brandcast API
+  description: >-
+    The Brandcast API lets developers programmatically perform Design Studio
+    actions such as creating websites from templates and updating website
+    content. Requests are authenticated with an API key in the x-api-key
+    header, sent over HTTPS. No OpenAPI/Swagger specification is published.
+  humanURL: https://developer.brandcast.io/
+  baseURL: https://api.brandcast-prod.io
+  tags:
+  - No-Code
+  - Website Builder
+  - Content Management
+  properties:
+  - type: Documentation
+    url: https://developer.brandcast.io/
+  - type: APIReference
+    url: https://developer.brandcast.io/
+  - type: Authentication
+    url: authentication/brandcast-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DeveloperPortal
+  url: https://developer.brandcast.io/
+- type: Documentation
+  url: https://developer.brandcast.io/
+- type: Authentication
+  url: authentication/brandcast-authentication.yml
+- type: DomainSecurity
+  url: security/brandcast-domain-security.yml
+- type: LLMsTxt
+  url: llms/brandcast-llms.txt
+- type: GitHubOrganization
+  url: https://github.com/brandcast
 - type: Website
   url: https://www.brandcast.com
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

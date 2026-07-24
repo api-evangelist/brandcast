@@ -1,0 +1,22 @@
+# Brandcast
+
+> Brandcast is a no-code digital customer experience and website platform that fuses web design, content creation, and brand asset management into a single system, letting business and marketing teams build and update branded websites, proposals, and content programmatically. The Brandcast API opens the Design Studio to developers to create websites from templates and update site content. Brandcast's website product has since been rebranded as "Sites" and joined Vev.
+
+## API
+
+- [Brandcast API — Developer Portal](https://developer.brandcast.io/): Overview of the Brandcast API for programmatic Design Studio actions (create websites from templates, update website content). Base URL https://api.brandcast-prod.io. Authentication is an API key in the x-api-key header, issued by Brandcast and sent over HTTPS.
+- [Brandcast API — Docs mirror](https://api.brandcast.io/): Mirror of the developer documentation.
+
+## Company
+
+- [Brandcast / Sites](https://www.brandcast.com): Company site (now redirects to the Sites product at sites.design following the Vev acquisition).
+- [Brandcast on GitHub](https://github.com/brandcast): Brandcast engineering GitHub organization (open-source npm packages and internal tooling; no dedicated API client SDK published).
+
+## Artifacts
+
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/authentication/brandcast-authentication.yml): API-key (x-api-key header) authentication model.
+- [Domain security](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/security/brandcast-domain-security.yml): TLS/HSTS/SPF/DMARC/DNSSEC probe of the Brandcast hosts.
+
+## Notes
+
+- Brandcast does not publish an OpenAPI/Swagger specification, an llms.txt, a /.well-known/ discovery surface, a public status page, or a security.txt as of this writing.
