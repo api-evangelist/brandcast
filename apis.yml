@@ -12,28 +12,35 @@ description: >-
   over HTTPS. Brandcast's website product has since been rebranded as "Sites"
   and joined Vev; the developer API portal remains at developer.brandcast.io.
 accessModel:
-  pricing: unknown
-  onboarding: self-serve
+  pricing: unpublished
+  onboarding: vendor-issued
   trial: false
   try_now: false
   public: false
-  label: Self-serve signup
-  confidence: medium
+  label: Vendor-issued API key
+  confidence: high
   source:
   - authentication
-  generated: '2026-07-22'
-  method: derived
+  - https://developer.brandcast.io/
+  - plans/brandcast-plans-pricing.yml
+  generated: '2026-08-13'
+  method: searched
+  note: >-
+    Corrected from "self-serve" in the prior round. The developer portal states
+    keys "are issued by Brandcast and are tied to the developer's Brandcast
+    account" — there is no self-service key creation flow, no signup for API
+    access, and no published pricing or plan for the API.
 image: https://brandcast-cdn.global.ssl.fastly.net/61c3bb24-acd1-4c34-a5e0-3af04a2afb9a/71efcf85-6914-4a7e-9e50-1667c8d865f7/3c7a4af9ee3e6c75f4a0153bd866a9d9/brandcast.png
 url: https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - shasta-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: swagger-1.2-contract-harvested
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-13'
 tags:
 - Company
 - Enterprise Software
@@ -47,9 +54,15 @@ apis:
 - name: Brandcast API
   description: >-
     The Brandcast API lets developers programmatically perform Design Studio
-    actions such as creating websites from templates and updating website
-    content. Requests are authenticated with an API key in the x-api-key
-    header, sent over HTTPS. No OpenAPI/Swagger specification is published.
+    actions across 26 operations: list and read templates, create a website
+    from a template, read and update website content, add or upload media via
+    S3 presigned URLs, publish and unpublish sites as asynchronous jobs, export
+    a publish as a ZIP, password-protect a site, and configure the Salesforce
+    tracking that makes Brandcast sites personalized and trackable. Requests
+    are authenticated with an API key in the x-api-key header, sent over HTTPS.
+    The contract is published as Swagger 1.2 at
+    s3.amazonaws.com/apidoc.brandcast-prod.io and rendered by Swagger UI 1.x on
+    developer.brandcast.io; it has not changed since 2021-07-01.
   humanURL: https://developer.brandcast.io/
   baseURL: https://api.brandcast-prod.io
   tags:
@@ -63,12 +76,32 @@ apis:
     url: https://developer.brandcast.io/
   - type: Authentication
     url: authentication/brandcast-authentication.yml
+  - type: OpenAPI
+    url: openapi/brandcast-websites-openapi.yml
+  - type: OpenAPI
+    url: openapi/brandcast-templates-openapi.yml
+  - type: OpenAPI
+    url: openapi/brandcast-salesforce-openapi.yml
+  - type: OpenAPI
+    url: openapi/brandcast-account-openapi.yml
+  - type: Swagger
+    url: openapi/_original/resources.json
+  - type: Overlay
+    url: overlays/brandcast-websites-overlay.yaml
+  - type: Overlay
+    url: overlays/brandcast-templates-overlay.yaml
+  - type: Overlay
+    url: overlays/brandcast-salesforce-overlay.yaml
+  - type: Overlay
+    url: overlays/brandcast-account-overlay.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/brandcast-agentic-access.yml
 - type: DeveloperPortal
   url: https://developer.brandcast.io/
 - type: Documentation
@@ -83,8 +116,56 @@ common:
   url: https://github.com/brandcast
 - type: Website
   url: https://www.brandcast.com
+- type: GettingStarted
+  url: https://tutorials.sites.design/
+- type: Support
+  url: https://support.timesites.com/en/
+- type: Login
+  url: https://app.brandcast.io/login
+- type: TermsOfService
+  url: https://www.sites.design/terms/
+- type: PrivacyPolicy
+  url: https://www.sites.design/privacy-policy/
+- type: Conventions
+  url: conventions/brandcast-conventions.yml
+- type: ErrorCatalog
+  url: errors/brandcast-problem-types.yml
+- type: DataModel
+  url: data-model/brandcast-data-model.yml
+- type: Lifecycle
+  url: lifecycle/brandcast-lifecycle.yml
+- type: ChangeLog
+  url: changelog/brandcast-changelog.yml
+- type: Conformance
+  url: conformance/brandcast-conformance.yml
+- type: VulnerabilityDisclosure
+  url: security/brandcast-vulnerability-disclosure.yml
+- type: Security
+  url: security/brandcast-vulnerability-disclosure.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Plans
+  url: plans/brandcast-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/brandcast-rate-limits.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 21
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Round 2. The prior round recorded "no OpenAPI/Swagger specification is
+    published"; STEP 0b contract discovery overturned that — the Swagger UI on
+    developer.brandcast.io names a discoveryUrl of
+    https://s3.amazonaws.com/apidoc.brandcast-prod.io/resources.json, a live
+    Swagger 1.2 resource listing with four API declarations and 26 operations,
+    all with basePath https://api.brandcast-prod.io/v1. Saved verbatim to
+    openapi/_original/ and converted to OpenAPI 3.1. Deliberately NOT wired:
+    WellKnown/SecurityTxt (every path 404s, 403s, or soft-200s an SPA shell),
+    AgentCard (no card served), MCPServer (no server ships — mcp/ holds a
+    derived candidate with deployment.mode none), SDKs (no first-party client
+    library exists), Idempotency (no idempotency key on any operation),
+    StatusPage (status.vev.design covers Vev, not the Brandcast API),
+    Deprecation (no policy; one deprecated parameter recorded in lifecycle),
+    Compliance/TrustCenter (no certification claimed), Pricing (no pricing
+    page; sites.design/pricing 404s).
