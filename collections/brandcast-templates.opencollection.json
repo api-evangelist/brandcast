@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brandcast Templates API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/templates"
+          },
+          "docs": "Returns templates for this Brandcast account."
+        },
+        {
+          "info": {
+            "name": "Get template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/templates/:templateId",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "Template ID"
+              }
+            ]
+          },
+          "docs": "Returns data for specified template."
+        },
+        {
+          "info": {
+            "name": "Get template content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/templates/:templateId/content",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "Template ID"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filters the result by name"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated.  Optional comma delimited list of tags to filter content by"
+              },
+              {
+                "name": "filterLockedContent",
+                "value": "",
+                "type": "query",
+                "description": "Enables/Disables the Locked Content Filter.  Defaults to true."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the size of the result set."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "If the response value next-offset exists, provide the value here to get the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns content for specified template. Use the optional name parameter to filter content by name."
+        },
+        {
+          "info": {
+            "name": "Get template media library",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/templates/:templateId/medialibrary",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "Template ID"
+              }
+            ]
+          },
+          "docs": "Returns template's media library."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

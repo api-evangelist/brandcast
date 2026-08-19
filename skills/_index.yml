@@ -1,0 +1,48 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  openapi/brandcast-{account,templates,websites,salesforce}-openapi.yml, derived
+  from the Brandcast Swagger 1.2 declarations at
+  https://s3.amazonaws.com/apidoc.brandcast-prod.io/
+api: Brandcast API
+base_url: https://api.brandcast-prod.io/v1
+skill_count: 4
+skills:
+- name: brandcast-create-website-from-template
+  file: brandcast-create-website-from-template.md
+  description: >-
+    Create a new Brandcast website from an existing Design Studio template and
+    verify it exists.
+  operations: [getTemplates, getTemplate, createWebsite, getWebsite]
+- name: brandcast-update-website-content
+  file: brandcast-update-website-content.md
+  description: >-
+    Read and page a website's content items, add or upload media, and update
+    individual content items.
+  operations: [getWebsiteContent, updateWebsiteContent, getTemplateContent, getWebsiteMediaLibrary, addToWebsiteMediaLibrary, uploadToWebsiteMediaLibrary, getTemplateMediaLibrary]
+- name: brandcast-publish-website
+  file: brandcast-publish-website.md
+  description: >-
+    Publish a website as an asynchronous job, poll to completion, unpublish,
+    password-protect, and export a publish as a ZIP.
+  operations: [createPublishJob, getPublishJob, getPublishJobs, unpublishWebsite, createExportJob, getExportJob, getExportList, protectWebsite]
+- name: brandcast-salesforce-tracking
+  file: brandcast-salesforce-tracking.md
+  description: >-
+    Read, replace and disable the Salesforce tracking configuration attached to
+    a Brandcast website.
+  operations: [getTracking, putTracking, deleteTracking]
+coverage:
+  operations_total: 26
+  operations_covered: 22
+  uncovered: [getAccountInfo, getWebsites, updateWebsite, deleteWebsite]
+  note: >-
+    The four uncovered operations are single-call reads or destructive
+    primitives that do not constitute a flow. deleteWebsite in particular is
+    deliberately not packaged as a skill: it is irreversible, has no
+    confirmation step in the API, and no idempotency or undo contract exists.
+grounding: >-
+  Every operationId referenced in these skills was read out of the provider's
+  own published contract. Nothing is invented — where Brandcast does not
+  publish a schema (the Salesforce tracking body, all response shapes) the skill
+  says so and instructs the agent not to guess.

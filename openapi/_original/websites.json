@@ -1,0 +1,715 @@
+{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "basePath": "https://api.brandcast-prod.io/v1",
+    "produces": ["application/json"],
+    "apis": [
+        {
+            "path": "/websites",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get websites",
+                "notes": "Returns websites for this Brandcast account.",
+                "nickname": "getWebsites",
+                "parameters": [{
+                    "name": "x-api-key",
+                    "description": "API key",
+                    "required": true,
+                    "allowMultiple": false,
+                    "dataType": "string",
+                    "paramType": "header"
+                }]
+            }]
+        },
+        {
+            "path": "/websites",
+            "operations": [{
+                "method": "POST",
+                "summary": "Create website from template",
+                "notes": "Creates website from specified template and returns data for the newly created website. However, the website won't be available on the Internet until it's explicitly <b>published<\/b>.",
+                "nickname": "createWebsite",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "templateId",
+                        "description": "Template ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "name",
+                        "description": "Name of new website",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "subdomain",
+                        "description": "Subdomain for new website",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "newId",
+                        "description": "Optional new website ID",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "description",
+                        "description": "Optional description for new website",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    }
+                ]
+            }]
+        },        
+        {
+            "path": "/websites/{websiteId}",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get website",
+                "notes": "Returns data for specified website.",
+                "nickname": "getWebsite",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}",
+            "operations": [{
+                "method": "PUT",
+                "summary": "Update website",
+                "notes": "Updates a limited set of fields for a Website. Writable fields: description.",
+                "nickname": "updateWebsite",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "website",
+                        "description": "JSON body",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "body"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}",
+            "operations": [{
+                "method": "DELETE",
+                "summary": "Delete website",
+                "notes": "Deletes specified website, which means removing it from the Internet if it's already been published.",
+                "nickname": "deleteWebsite",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },        
+        {
+            "path": "/websites/{websiteId}/content",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get website content",
+                "notes": "Returns content for specified website. Use the optional <b>name</b> parameter to filter content by name.",
+                "nickname": "getWebsiteContent",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "name",
+                        "description": "Filters the result by name",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "tags",
+                        "description": "<b>Deprecated.</b>  Optional comma delimited list of tags to filter content by",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "filterLockedContent",
+                        "description": "Enables/Disables the Locked Content Filter.  Defaults to <b>true<\/b>.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "limit",
+                        "description": "Limits the size of the result set.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "offset",
+                        "description": "If the response value next-offset exists, provide the value here to get the next page of results.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}/content/{contentId}",
+            "operations": [{
+                "method": "PUT",
+                "summary": "Update website content",
+                "notes": "Updates content for specified website. The JSON body depends on the type of content being updated (e.g., text, embed, images, video, etc.), which is known by getting the website's content.",
+                "nickname": "updateWebsiteContent",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "contentId",
+                        "description": "Content ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "content",
+                        "description": "JSON body",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "body"
+                    }
+                ]
+            }]
+        },        
+        {
+            "path": "/websites/{websiteId}/medialibrary",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get website media library",
+                "notes": "Returns website's media library.",
+                "nickname": "getWebsiteMediaLibrary",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}/medialibrary",
+            "operations": [{
+                "method": "POST",
+                "summary": "Add to website media library",
+                "notes": "Supported media are video/youtube and video/vimeo. Subsequently, once the media has been added to S3, the media ID can be used to update content in the website.",
+                "nickname": "addToWebsiteMediaLibrary",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "media",
+                        "description": "JSON body",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "body"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}/medialibrary/upload",
+            "operations": [{
+                "method": "POST",
+                "summary": "Upload to website media library",
+                "notes": "Returns a media ID for the media and an S3 presigned URL to upload the media content to. Supported media are images, video, PDFs, and ZIP files. Subsequently, once the media has been uploaded to S3, the media ID can be used to update content in the website.",
+                "nickname": "uploadToWebsiteMediaLibrary",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "fileName",
+                        "description": "Media file name",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}/publish",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get website publishing history",
+                "notes": "Returns list of publishing jobs for specified website.",
+                "nickname": "getPublishJobs",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },        
+        {
+            "path": "/websites/{websiteId}/publish",
+            "operations": [{
+                "method": "POST",
+                "summary": "Publish website",
+                "notes": "Publishing puts the website on the Internet. This API creates a job that initiates and monitors the publishing process. Returns information about publishing the website, e.g., publishId, publishing status, etc. Then the website's publishing status can be polled via the publishId that's returned.",
+                "nickname": "createPublishJob",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "body",
+                        "description": "Custom Vars",
+                        "required": false,
+                        "paramType": "body",
+                        "dataType": "CustomVars"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}/publish/{publishId}",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get status of publishing website",
+                "notes": "Returns information about publishing the website, e.g., publishing status.",
+                "nickname": "getPublishJob",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "publishId",
+                        "description": "Publish ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}/unpublish",
+            "operations": [{
+                "method": "POST",
+                "summary": "Unpublish website",
+                "notes": "Removes specified website from the Internet and returns data for unpublished website.",
+                "nickname": "unpublishWebsite",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}/publish/{publishId}/export",
+            "operations": [{
+                "method": "POST",
+                "summary": "Export website",
+                "notes": "Starts an export job which will ZIP up all HTML and assets for this publish and provide them for download via an S3 signed URL.  If the file name already exists, it will be modified like filename(1).",
+                "nickname": "createExportJob",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "x-account-id",
+                        "description": "The account context for this action. Required when using Authorization header.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "Authorization",
+                        "description": "A valid JWT. Only required when called by Design Studio.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "publishId",
+                        "description": "An existing publish ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "fileName",
+                        "description": "The preferred name for the ZIP file.",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}/publish/{publishId}/export/{fileName}",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get status of exporting a publish",
+                "notes": "Returns information about exporting this publish, e.g., status, signed URL.  Calling this API will also refresh the signed URL.",
+                "nickname": "getExportJob",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "x-account-id",
+                        "description": "The account context for this action. Required when using Authorization header.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "Authorization",
+                        "description": "A valid JWT. Only required when called by Design Studio.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "publishId",
+                        "description": "An existing publish ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "fileName",
+                        "description": "The name for the ZIP file.",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },
+        {
+            "path": "/websites/{websiteId}/export",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get a list of exports",
+                "notes": "Returns a list of exports for this website.",
+                "nickname": "getExportList",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "x-account-id",
+                        "description": "The account context for this action. Required when using Authorization header.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "Authorization",
+                        "description": "A valid JWT. Only required when called by Design Studio.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },        
+        {
+            "path": "/websites/{websiteId}/protection",
+            "operations": [{
+                "method": "PUT",
+                "summary": "Add or remove password protection",
+                "notes": "Adds password protection to specified website if optional <b>username<\/b> and <b>password<\/b> are specified. Otherwise, removes password protection if they're not.",
+                "nickname": "protectWebsite",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "username",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "password",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    }
+                ]
+            }]
+        }
+    ],
+    "models": {
+        "CustomVars": {
+            "id": "CustomVars",
+            "properties": {
+                "key": {
+                    "type": "arbitraryJSON"
+                }
+            }
+        }
+    }
+}

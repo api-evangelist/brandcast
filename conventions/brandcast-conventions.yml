@@ -1,0 +1,132 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/_original/*.json (Brandcast Swagger 1.2 declarations at
+  https://s3.amazonaws.com/apidoc.brandcast-prod.io/) and the Brandcast
+  developer portal https://developer.brandcast.io/
+base_url: https://api.brandcast-prod.io/v1
+authentication:
+  style: api-key-header
+  header: x-api-key
+  transport: https-only
+  secondary:
+    style: bearer-jwt
+    header: Authorization
+    context_header: x-account-id
+    scope: >-
+      Accepted on the three website export operations only (createExportJob,
+      getExportJob, getExportList), documented as "A valid JWT. Only required
+      when called by Design Studio." x-account-id supplies the account context
+      and is required whenever the Authorization header is used.
+  see: authentication/brandcast-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  evidence: >-
+    No Idempotency-Key or equivalent header appears in any of the 26 published
+    operations, and the developer portal documents no retry-safety contract.
+    Write operations (createWebsite, createPublishJob, createExportJob,
+    addToWebsiteMediaLibrary) are therefore NOT safely retryable. No
+    Idempotency pointer is emitted in apis.yml.
+pagination:
+  supported: true
+  style: limit-offset
+  scope: >-
+    The two content-listing operations only — getWebsiteContent
+    (/websites/{websiteId}/content) and getTemplateContent
+    (/templates/{templateId}/content). All other list operations
+    (getWebsites, getTemplates, getPublishJobs, getExportList,
+    media library reads) publish no pagination parameters.
+  request_params:
+  - name: limit
+    in: query
+    description: Limits the size of the result set.
+  - name: offset
+    in: query
+    description: >-
+      If the response value next-offset exists, provide the value here to get
+      the next page of results.
+  response_fields:
+  - name: next-offset
+    description: >-
+      Cursor-style continuation value returned in the response body; its
+      presence signals another page. Documented in the offset parameter
+      description; the response schema itself is not published.
+filtering:
+  supported: true
+  params:
+  - name: name
+    applies_to: [getWebsiteContent, getTemplateContent]
+    description: Filters the result by name.
+  - name: filterLockedContent
+    applies_to: [getWebsiteContent, getTemplateContent]
+    description: Enables/disables the Locked Content Filter. Defaults to true.
+  - name: tags
+    applies_to: [getWebsiteContent, getTemplateContent]
+    deprecated: true
+    description: >-
+      Marked "Deprecated." in the provider's own parameter description.
+      Optional comma-delimited list of tags to filter content by.
+field_expansion:
+  supported: false
+metadata:
+  supported: true
+  mechanism: >-
+    createPublishJob accepts an optional CustomVars body object whose
+    properties are arbitrary JSON keyed by name — the only user-defined
+    metadata surface in the API.
+request_id_tracing:
+  supported: unknown
+  evidence: >-
+    No request-id or correlation header is documented. The API is fronted by
+    AWS API Gateway, which conventionally returns x-amzn-RequestId /
+    x-amz-apigw-id, but Brandcast does not document either, so this is recorded
+    as unknown rather than asserted.
+versioning:
+  style: uri-path
+  current: v1
+  evidence: >-
+    Every published basePath is https://api.brandcast-prod.io/v1. The Swagger
+    declarations carry apiVersion 1.0.0.
+  see: lifecycle/brandcast-lifecycle.yml
+error_envelope:
+  format: proprietary-json
+  shape: '{"message": "<string>"}'
+  rfc9457: false
+  evidence: >-
+    Probed 2026-08-13: an unauthenticated GET https://api.brandcast-prod.io/
+    returns HTTP 403 with content-type application/json and body
+    {"message":"Missing Authentication Token"}. The published Swagger 1.2
+    declarations contain no responseMessages, so no other error shape is
+    documented.
+  see: errors/brandcast-problem-types.yml
+rate_limit_signaling:
+  documented: false
+  headers: []
+  see: rate-limits/brandcast-rate-limits.yml
+content_types:
+  produces: [application/json]
+  consumes: [application/json]
+async_patterns:
+  supported: true
+  style: job-poll
+  description: >-
+    Publishing and exporting are asynchronous jobs. POST
+    /websites/{websiteId}/publish creates a publish job and returns a
+    publishId; the caller then polls GET
+    /websites/{websiteId}/publish/{publishId} for status. POST
+    .../export/ starts an export job whose status is polled at GET
+    .../export/{fileName} and whose result is delivered as an S3 signed URL.
+    There is no webhook or callback alternative.
+  see: asyncapi (none published)
+media_upload:
+  style: presigned-url
+  description: >-
+    POST /websites/{websiteId}/medialibrary/upload returns a media ID and an S3
+    presigned URL; the client uploads the bytes directly to S3, then uses the
+    media ID to update website content. Supported media: images, video, PDFs,
+    ZIP files.
+notes: >-
+  Derived entirely from the provider's own published Swagger 1.2 declarations
+  plus one live probe of the API root. Brandcast publishes no separate
+  conventions/guidelines page.

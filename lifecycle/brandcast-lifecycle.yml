@@ -1,0 +1,88 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/_original/*.json plus HTTP Last-Modified headers on
+  https://s3.amazonaws.com/apidoc.brandcast-prod.io/*.json and probes of the
+  Brandcast / Sites / Vev web surfaces
+versioning:
+  style: uri-path
+  current_version: v1
+  base_url: https://api.brandcast-prod.io/v1
+  spec_api_version: 1.0.0
+  policy_published: false
+  note: >-
+    Version is pinned in the path. Brandcast publishes no versioning policy, no
+    version-negotiation header, and no statement about how or when a v2 would
+    be introduced.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_elements:
+  - element: parameter
+    name: tags
+    operations: [getWebsiteContent, getTemplateContent]
+    evidence: >-
+      The provider's own parameter description begins "Deprecated." — the only
+      deprecation signal published anywhere in the Brandcast API. No sunset
+      date, no replacement named.
+  note: >-
+    No deprecation policy page exists, so no Deprecation pointer is emitted in
+    apis.yml. One deprecated parameter is recorded above.
+status_page:
+  brandcast_api: null
+  note: >-
+    Brandcast publishes no status page for api.brandcast-prod.io. Vev — which
+    acquired the Sites product Brandcast became — runs an Atlassian Statuspage
+    at https://status.vev.design/ (HTTP 200, probed 2026-08-13), but its
+    components are Platform, Staging, Hosting & Publishing, Standard Hosting,
+    www.vev.design, CDN, SFTP, FTP(S), Amazon S3, Webhook and Publishing. None
+    covers the Brandcast API host. Recorded for context only; NO StatusPage
+    pointer is emitted, because the Brandcast API's availability is not
+    reported anywhere.
+  related_operator_status_page: https://status.vev.design/
+sla:
+  published: false
+  note: >-
+    No uptime commitment or SLA is published for the Brandcast API. The Sites
+    platform FAQ describes an AWS/CloudFront serverless architecture and offers
+    to accommodate customer penetration tests, but states no availability
+    target.
+  source: https://support.timesites.com/en/articles/969034-sites-platform-faq-for-it
+change_log:
+  api_specific: false
+  product: https://support.timesites.com/en/collections/1971279-product-releases-at-sites
+  see: changelog/brandcast-changelog.yml
+freshness:
+  spec_last_modified:
+  - file: openapi/_original/account.json
+    last_modified: '2020-04-10'
+  - file: openapi/_original/resources.json
+    last_modified: '2020-09-15'
+  - file: openapi/_original/salesforce.json
+    last_modified: '2020-09-15'
+  - file: openapi/_original/templates.json
+    last_modified: '2021-07-01'
+  - file: openapi/_original/websites.json
+    last_modified: '2021-07-01'
+  observation: >-
+    The newest Brandcast API contract has not changed since 2021-07-01 — five
+    years as of this probe. The developer portal still runs Swagger UI 1.x
+    against a Swagger 1.2 resource listing, a format superseded in 2014. The
+    surface is live (api.brandcast-prod.io answers) and the specs are still
+    served, but the contract is dormant.
+corporate_lifecycle:
+  note: >-
+    Brandcast's website product was renamed "Sites" (briefly TIME Sites) and
+    the business was acquired by Vev (vev.design, Norway). brandcast.com and
+    timesites.com now both resolve to www.sites.design. The developer portal at
+    developer.brandcast.io and the API host api.brandcast-prod.io remain live
+    and un-migrated; the application login is still app.brandcast.io. No
+    end-of-life notice for the API has been published.
+  evidence:
+  - url: https://www.vev.design/blog/vev-acquires-time-sites/
+    note: acquisition announcement linked from the product site footer
+  - url: https://brandcast.com/
+    status: 200
+    note: serves the www.sites.design single-page site

@@ -1,0 +1,23 @@
+{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "basePath": "https://api.brandcast-prod.io/v1",
+    "produces": ["application/json"],
+    "apis": [{
+        "path": "/account",
+        "operations": [{
+            "method": "GET",
+            "summary": "Get account info",
+            "notes": "Returns account information for this Brandcast account.",
+            "nickname": "getAccountInfo",
+            "parameters": [{
+                "name": "x-api-key",
+                "description": "API key",
+                "required": true,
+                "allowMultiple": false,
+                "dataType": "string",
+                "paramType": "header"
+            }]
+        }]
+    }]
+}

@@ -1,0 +1,34 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developer.brandcast.io/, https://brandcast.com/,
+  https://www.sites.design/, https://www.sites.design/pricing/
+plan_count: 0
+plans: []
+currency: null
+note: >-
+  Brandcast publishes NO pricing for the Brandcast API and no pricing page for
+  the Sites product it became. The developer portal is a single page covering
+  overview, endpoint and authentication with no commercial terms; API keys are
+  "issued by Brandcast and tied to the developer's Brandcast account", i.e.
+  provisioned by the vendor rather than self-served. The product site
+  (brandcast.com, which serves www.sites.design) has no pricing link anywhere
+  in its markup, and https://www.sites.design/pricing/ returns HTTP 404 — the
+  site serves genuine 404s, so this is a real absence and not an SPA artifact.
+  The only pricing on the wider surface belongs to Vev, the acquirer
+  (https://www.vev.design/pricing/, HTTP 200), and covers Vev's own product,
+  not the Brandcast API — it is deliberately NOT recorded as a Brandcast plan.
+  The only commercial signal for Sites is a "Get a demo" call-to-action, i.e. a
+  sales-gated motion. Accordingly no Pricing pointer is emitted in apis.yml.
+evidence:
+- url: https://www.sites.design/pricing/
+  http_status: 404
+  fetched: '2026-08-13'
+- url: https://brandcast.com/
+  http_status: 200
+  note: no pricing link present in the page
+  fetched: '2026-08-13'
+- url: https://developer.brandcast.io/
+  http_status: 200
+  note: developer portal states no pricing, quota or plan
+  fetched: '2026-08-13'

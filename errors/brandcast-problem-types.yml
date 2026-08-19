@@ -1,0 +1,53 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/_original/*.json (Brandcast Swagger 1.2 declarations) plus a live
+  unauthenticated probe of https://api.brandcast-prod.io/ on 2026-08-13
+format: proprietary-json
+rfc9457: false
+envelope:
+  content_type: application/json
+  shape:
+    message: string
+  example_field: message
+  note: >-
+    Single-field envelope. There is no error code, no type URI, no field-level
+    detail and no trace identifier.
+error_count: 1
+errors:
+- status: 403
+  code: null
+  title: Missing Authentication Token
+  message: Missing Authentication Token
+  cause: >-
+    No x-api-key header was sent, the key is invalid, or the path does not
+    resolve to a deployed API Gateway resource. AWS API Gateway returns this
+    same body for all three cases, so a 403 is ambiguous between "bad key" and
+    "no such endpoint".
+  remediation: >-
+    Send a valid API key in the x-api-key header over HTTPS. Keys are issued by
+    Brandcast and are tied to the developer's Brandcast account
+    (https://developer.brandcast.io/).
+  method: probed
+  evidence:
+    url: https://api.brandcast-prod.io/
+    http_status: 403
+    content_type: application/json
+    body: '{"message":"Missing Authentication Token"}'
+    fetched: '2026-08-13'
+gaps:
+  - >-
+    The published Swagger 1.2 declarations define NO responseMessages on any of
+    the 26 operations — not a single 4xx or 5xx is documented. Every non-403
+    failure shape (validation errors on createWebsite, a missing websiteId on
+    getWebsite, a failed publish job) is undocumented and undiscoverable
+    without an API key.
+  - >-
+    No error code registry, no machine-readable error type, no documented
+    retry guidance. An agent cannot distinguish a retryable failure from a
+    permanent one.
+notes: >-
+  Recorded honestly as a one-entry catalog. The single entry is the only error
+  shape Brandcast exposes to an unauthenticated caller and the only one that
+  could be verified without credentials. Nothing here is inferred from a
+  generic AWS template beyond the body actually observed.

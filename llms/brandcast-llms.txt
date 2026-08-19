@@ -1,22 +1,50 @@
 # Brandcast
 
-> Brandcast is a no-code digital customer experience and website platform that fuses web design, content creation, and brand asset management into a single system, letting business and marketing teams build and update branded websites, proposals, and content programmatically. The Brandcast API opens the Design Studio to developers to create websites from templates and update site content. Brandcast's website product has since been rebranded as "Sites" and joined Vev.
+> Brandcast is a no-code digital customer experience and website platform that fuses web design, content creation, and brand asset management into a single system, letting business and marketing teams build and update branded websites, proposals, and content programmatically. The Brandcast API opens the Design Studio to developers to create websites from templates, update site content and media, publish and export sites, and configure Salesforce tracking. Brandcast's website product has since been rebranded as "Sites" and joined Vev; the developer API portal remains live at developer.brandcast.io.
 
 ## API
 
-- [Brandcast API — Developer Portal](https://developer.brandcast.io/): Overview of the Brandcast API for programmatic Design Studio actions (create websites from templates, update website content). Base URL https://api.brandcast-prod.io. Authentication is an API key in the x-api-key header, issued by Brandcast and sent over HTTPS.
-- [Brandcast API — Docs mirror](https://api.brandcast.io/): Mirror of the developer documentation.
+- [Brandcast API — Developer Portal](https://developer.brandcast.io/): Overview of the Brandcast API. Production base URL https://api.brandcast-prod.io/v1. Authentication is an API key in the x-api-key header, issued by Brandcast and sent over HTTPS.
+- [Swagger 1.2 resource listing](https://s3.amazonaws.com/apidoc.brandcast-prod.io/resources.json): The machine-readable contract the developer portal loads. Four API declarations — account, salesforce, templates, websites — covering 26 operations.
+- [account.json](https://s3.amazonaws.com/apidoc.brandcast-prod.io/account.json): Account info (1 operation).
+- [templates.json](https://s3.amazonaws.com/apidoc.brandcast-prod.io/templates.json): Templates, template content and template media library (4 operations).
+- [websites.json](https://s3.amazonaws.com/apidoc.brandcast-prod.io/websites.json): Website CRUD, content, media library, publish/unpublish, export and password protection (18 operations).
+- [salesforce.json](https://s3.amazonaws.com/apidoc.brandcast-prod.io/salesforce.json): Salesforce tracking configuration per website (3 operations).
 
 ## Company
 
-- [Brandcast / Sites](https://www.brandcast.com): Company site (now redirects to the Sites product at sites.design following the Vev acquisition).
-- [Brandcast on GitHub](https://github.com/brandcast): Brandcast engineering GitHub organization (open-source npm packages and internal tooling; no dedicated API client SDK published).
+- [Brandcast / Sites](https://www.sites.design/): Product site. brandcast.com and timesites.com both resolve here.
+- [Sites Support Center](https://support.timesites.com/en/): Help centre, including the security overview and the responsible-disclosure policy.
+- [Sites Tutorials](https://tutorials.sites.design/): Step-by-step Design Studio how-to guides.
+- [Application login](https://app.brandcast.io/login): Brandcast Design Studio sign-in.
+- [Brandcast on GitHub](https://github.com/brandcast): Engineering GitHub organization. 40 public repos, all forks of third-party JavaScript libraries; no API client SDK is published.
+- [Vev acquires TIME Sites](https://www.vev.design/blog/vev-acquires-time-sites/): Acquisition announcement.
 
 ## Artifacts
 
-- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/authentication/brandcast-authentication.yml): API-key (x-api-key header) authentication model.
-- [Domain security](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/security/brandcast-domain-security.yml): TLS/HSTS/SPF/DMARC/DNSSEC probe of the Brandcast hosts.
+- [OpenAPI 3.1 — Websites](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/openapi/brandcast-websites-openapi.yml): Conversion of the provider's Swagger 1.2 declaration.
+- [OpenAPI 3.1 — Templates](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/openapi/brandcast-templates-openapi.yml)
+- [OpenAPI 3.1 — Salesforce](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/openapi/brandcast-salesforce-openapi.yml)
+- [OpenAPI 3.1 — Account](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/openapi/brandcast-account-openapi.yml)
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/authentication/brandcast-authentication.yml): x-api-key header, plus an internal Design Studio JWT on the export operations.
+- [API conventions](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/conventions/brandcast-conventions.yml): Auth style, limit/offset pagination with next-offset, job-poll async pattern, presigned-URL media upload, error envelope, versioning.
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/errors/brandcast-problem-types.yml): The one verified error shape and the documentation gaps around it.
+- [Data model](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/data-model/brandcast-data-model.yml): Nine entities and their relationships, derived from path structure.
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/lifecycle/brandcast-lifecycle.yml): Versioning, deprecation, freshness and corporate lifecycle.
+- [Changelog](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/changelog/brandcast-changelog.yml): The product release-notes collection.
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/conformance/brandcast-conformance.yml)
+- [Agent Skills](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/skills/_index.yml): Four packaged flows grounded in real operationIds.
+- [MCP candidate tools](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/mcp/brandcast-mcp.yml): A derived candidate surface — Brandcast ships no MCP server.
+- [Vulnerability disclosure](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/security/brandcast-vulnerability-disclosure.yml): Responsible-disclosure policy, PGP key metadata, safe harbour.
+- [Trust posture](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/security/brandcast-trust-center.yml): Published security practices; no certifications claimed.
+- [Domain security](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/security/brandcast-domain-security.yml): TLS/HSTS/SPF/DMARC/DNSSEC probe.
+- [Well-known probe](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/well-known/brandcast-well-known.yml): Every /.well-known/ path probed and its result.
+- [Packages](https://raw.githubusercontent.com/api-evangelist/brandcast/refs/heads/main/packages/brandcast-packages.yml): No first-party SDK exists.
 
 ## Notes
 
-- Brandcast does not publish an OpenAPI/Swagger specification, an llms.txt, a /.well-known/ discovery surface, a public status page, or a security.txt as of this writing.
+- The contract is Swagger 1.2, not OpenAPI. Brandcast still serves it through Swagger UI 1.x. The OpenAPI 3.1 documents in this repo are a mechanical conversion by API Evangelist, not something Brandcast publishes.
+- The newest API declaration has not changed since 2021-07-01. The API host is live but the contract is dormant.
+- Brandcast serves no /.well-known/ document, no llms.txt, no security.txt, no A2A agent card, no MCP server, no status page for the API, no published pricing and no published rate limits.
+- api.brandcast-prod.io is an AWS API Gateway that answers every unauthenticated request with HTTP 403 {"message":"Missing Authentication Token"}.
+- brandcast.com is a single-page site that returns HTTP 200 with an HTML shell for any path, including /.well-known/*. Those 200s are soft, not documents.

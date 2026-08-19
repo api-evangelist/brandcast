@@ -1,0 +1,29 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  npm registry search, PyPI, the Brandcast GitHub organization
+  (https://github.com/brandcast), and the Brandcast developer portal
+  (https://developer.brandcast.io/)
+package_count: 0
+packages: []
+notes: >-
+  Brandcast publishes NO first-party client library for the Brandcast API in any
+  registry. The developer portal documents raw HTTPS calls with an x-api-key
+  header and links to no SDK. Searches run and their results:
+
+  - npm registry search "brandcast": the only matches are
+    @brandcast_app/cozi-mcp-server (1.1.0, 2025-11-26) and
+    @brandcast_app/mealviewer-api-client (0.2.2, 2025-11-12). BOTH belong to a
+    DIFFERENT company — their repository field points at
+    github.com/BrandCast-Signage (a digital-signage vendor), not this Brandcast.
+    They are deliberately NOT recorded as packages here.
+  - PyPI /pypi/brandcast/json -> HTTP 404. No package.
+  - github.com/brandcast is a real org (40 public repos, blog
+    https://brandcast.com) but every repo is a FORK of a third-party JavaScript
+    library (react, draft-js, immutable-js, radium, bull, ckeditor-dev) or a
+    prebuilt "-built" artifact of one. The org's own `packages` repo, described
+    as "Open-sourced npm packages built for and used in Brandcast", contains
+    only a LICENSE and a README — no package source. None of these is a client
+    for the Brandcast API.
+
+  No `SDKs` pointer is emitted in apis.yml, because no first-party SDK exists.

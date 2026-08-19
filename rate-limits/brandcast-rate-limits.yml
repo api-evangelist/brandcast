@@ -1,0 +1,30 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developer.brandcast.io/, openapi/_original/*.json, and a live
+  unauthenticated request to https://api.brandcast-prod.io/
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: null
+retry_after: false
+note: >-
+  Brandcast documents NO rate limits. The developer portal covers only
+  overview, endpoint and authentication; none of the 26 published operations
+  declares a 429 response (in fact none declares any error response at all);
+  and no X-RateLimit-*, RateLimit-* or Retry-After header is mentioned
+  anywhere. A live unauthenticated request to https://api.brandcast-prod.io/
+  returned HTTP 403 with no rate-limit headers in the response, so nothing
+  could be observed at runtime either. The API is fronted by AWS API Gateway,
+  which enforces account-level throttling by default, but Brandcast publishes
+  no figures and this pipeline does not guess them. An honest zero: an agent
+  integrating with this API has no published backoff contract.
+evidence:
+- url: https://api.brandcast-prod.io/
+  http_status: 403
+  note: no rate-limit headers present on the response
+  fetched: '2026-08-13'
+- url: https://developer.brandcast.io/
+  http_status: 200
+  note: no rate limit, quota or throttling documented
+  fetched: '2026-08-13'

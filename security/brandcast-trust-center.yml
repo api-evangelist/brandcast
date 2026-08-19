@@ -1,0 +1,57 @@
+generated: '2026-08-13'
+method: searched
+source: https://support.timesites.com/en/articles/966545-security-overview
+docs: https://support.timesites.com/en/articles/966545-security-overview
+trust_center:
+  published: false
+  url: null
+  note: >-
+    Brandcast / Sites runs no trust centre. There is no trust.<domain> host, no
+    compliance portal and no certification page. What exists is a single
+    prose "Security Overview" help-centre article plus an IT FAQ. Recorded here
+    because it is the provider's only published security posture statement.
+certifications:
+  count: 0
+  named: []
+  note: >-
+    NO certification is claimed anywhere — no SOC 2, no ISO 27001, no PCI DSS,
+    no HIPAA, no FedRAMP, no GDPR attestation. Because no certification or
+    compliance program is published, NO `Compliance` pointer is emitted in
+    apis.yml.
+practices_published:
+- area: hosting
+  claim: Runs on Amazon Web Services across multiple availability zones with firewall protection.
+- area: transport-encryption
+  claim: The SITES Studio is served exclusively over SSL; all data is encrypted in transit.
+- area: custom-domain-tls
+  claim: >-
+    Automatic SSL for custom domains for paid customers, using AWS Certificate
+    Manager with automatic annual renewal.
+- area: backups
+  claim: Regular database backups stored across multiple AWS availability zones.
+- area: access-control
+  claim: Employees do not have access to user data unless required for support reasons.
+- area: payments
+  claim: Payments handled by Stripe; card data is never stored on Brandcast servers.
+- area: credential-handling
+  claim: >-
+    Passwords and other sensitive information are filtered from logs; all
+    passwords are one-way hashed with an industry-standard algorithm.
+- area: ddos
+  claim: AWS Shield DDoS protection in front of published websites on CloudFront.
+  source: https://support.timesites.com/en/articles/4774193-sites-web-hosting-platform
+- area: customer-pentest
+  claim: Customer penetration tests and security scans are permitted when arranged in advance.
+  source: https://support.timesites.com/en/articles/969034-sites-platform-faq-for-it
+- area: accessibility
+  claim: Publishes an ADA-compliance note for websites built on the platform.
+  source: https://support.timesites.com/en/articles/1132211-accessibility-of-sites-websites-ada-compliance
+subprocessors_published: false
+data_residency_published: false
+evidence:
+- url: https://support.timesites.com/en/articles/966545-security-overview
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://support.timesites.com/en/articles/969034-sites-platform-faq-for-it
+  http_status: 200
+  fetched: '2026-08-13'

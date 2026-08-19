@@ -1,0 +1,97 @@
+{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "basePath": "https://api.brandcast-prod.io/v1",
+    "produces": ["application/json"],
+    "apis": [       
+        {
+            "path": "/salesforce/tracking/{websiteId}",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get Tracking",
+                "notes": "Returns Tracking for this website.",
+                "nickname": "getTracking",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },        
+        {
+            "path": "/salesforce/tracking/{websiteId}",
+            "operations": [{
+                "method": "PUT",
+                "summary": "Create or update Tracking",
+                "notes": "Creates or updates a collection of Tracking configurations for this website. For details of the Tracking JSON, refer to <a href=\"https://brandcast.atlassian.net/wiki/spaces/ENG/pages/365658182/Salesforce+App+Features\">Salesforce App Features</a>.",
+                "nickname": "putTracking",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "tracking",
+                        "description": "A collection of Tracking configurations.",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "body"
+                    }
+                ]
+            }]
+        },        
+        {
+            "path": "/salesforce/tracking/{websiteId}",
+            "operations": [{
+                "method": "DELETE",
+                "summary": "Disable Tracking",
+                "notes": "Disables the Tracking for this website.",
+                "nickname": "deleteTracking",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "websiteId",
+                        "description": "Website ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        }
+    ]
+}

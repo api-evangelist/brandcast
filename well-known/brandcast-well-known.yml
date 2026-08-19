@@ -1,0 +1,175 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of the Brandcast API host, developer portal host and company web host
+summary:
+  hits: 0
+  note: >-
+    No /.well-known/ document is served on any Brandcast host. Two distinct
+    failure shapes were observed and neither is a hit. (1) api.brandcast-prod.io
+    is an AWS API Gateway that answers EVERY unauthenticated path with HTTP 403
+    {"message":"Missing Authentication Token"} — including /.well-known/*, so a
+    403 there carries no information about whether a document exists. (2)
+    brandcast.com is a single-page site that answers HTTP 200 with the site's
+    HTML shell for every path, including /.well-known/security.txt and
+    /.well-known/agent-card.json — a soft-200, NOT a document. Per the pipeline
+    rule a 200 returning an HTML/SPA shell is recorded as a miss and NO
+    WellKnown / SecurityTxt / AgentCard pointer is emitted.
+hosts:
+- host: api.brandcast-prod.io
+  note: AWS API Gateway; blanket 403 on all unauthenticated paths
+  paths:
+  - path: /.well-known/security.txt
+    status: 403
+    content_type: application/json
+    hit: false
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 403
+    content_type: application/json
+    hit: false
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    content_type: application/json
+    hit: false
+    file: null
+  - path: /.well-known/api-catalog
+    status: 403
+    content_type: application/json
+    hit: false
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    content_type: application/json
+    hit: false
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 403
+    content_type: application/json
+    hit: false
+    file: null
+  - path: /.well-known/agent.json
+    status: 403
+    content_type: application/json
+    hit: false
+    file: null
+- host: developer.brandcast.io
+  note: static Swagger UI 1.x developer portal; serves a real 404 page
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    content_type: text/html
+    hit: false
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    content_type: text/html
+    hit: false
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    content_type: text/html
+    hit: false
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    content_type: text/html
+    hit: false
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    content_type: text/html
+    hit: false
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    content_type: text/html
+    hit: false
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    content_type: text/html
+    hit: false
+    file: null
+  - path: /llms.txt
+    status: 404
+    content_type: text/html
+    hit: false
+    file: null
+- host: brandcast.com
+  note: >-
+    SPA catch-all — returns HTTP 200 with the sites.design HTML shell for every
+    path probed. Treated as a MISS, not a hit.
+  paths:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    hit: false
+    soft_200: true
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    hit: false
+    soft_200: true
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    hit: false
+    soft_200: true
+    file: null
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: text/html
+    hit: false
+    soft_200: true
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    content_type: text/html
+    hit: false
+    soft_200: true
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    hit: false
+    soft_200: true
+    file: null
+  - path: /.well-known/agent.json
+    status: 200
+    content_type: text/html
+    hit: false
+    soft_200: true
+    file: null
+  - path: /llms.txt
+    status: 200
+    content_type: text/html
+    hit: false
+    soft_200: true
+    file: null
+- host: www.sites.design
+  note: current product host (Sites, formerly Brandcast); serves real 404s
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    content_type: text/plain
+    hit: false
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    content_type: text/plain
+    hit: false
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    content_type: text/plain
+    hit: false
+    file: null
+  - path: /llms.txt
+    status: 404
+    content_type: text/plain
+    hit: false
+    file: null
+checked: '2026-08-13'

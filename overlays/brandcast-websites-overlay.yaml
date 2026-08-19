@@ -1,0 +1,39 @@
+# generated: '2026-08-13'
+# method: generated
+# source: openapi/brandcast-websites-openapi.yml
+overlay: 1.0.0
+info:
+  title: "API Evangelist enhancements \u2014 Brandcast Websites API"
+  version: 1.0.0
+extends: openapi/brandcast-websites-openapi.yml
+actions:
+- target: $.info
+  description: Record where the contract actually came from and how it was obtained, so a consumer can
+    re-verify it.
+  update:
+    x-apis-io:
+      source-format: Swagger 1.2
+      source-url: https://s3.amazonaws.com/apidoc.brandcast-prod.io/websites.json
+      discovered-via: https://developer.brandcast.io/ (Swagger UI discoveryUrl)
+      converted-by: api-evangelist enrichment pipeline
+      converted-on: '2026-08-13'
+- target: $.info
+  description: Flag contract freshness. The Brandcast API declarations have not changed since 2021-07-01
+    (S3 Last-Modified).
+  update:
+    x-contract-last-modified: '2021-07-01'
+- target: $.info
+  description: Link the derived artifacts a consumer needs and the contract does not carry.
+  update:
+    x-artifacts:
+      authentication: authentication/brandcast-authentication.yml
+      conventions: conventions/brandcast-conventions.yml
+      errors: errors/brandcast-problem-types.yml
+      lifecycle: lifecycle/brandcast-lifecycle.yml
+      data-model: data-model/brandcast-data-model.yml
+      skills: skills/_index.yml
+- target: $.paths.*.*
+  description: Record that no operation in this contract declares an idempotency key, so unsafe methods
+    are not blind-retryable.
+  update:
+    x-idempotent-retry: false

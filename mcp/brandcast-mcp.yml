@@ -1,0 +1,188 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/brandcast-account-openapi.yml, openapi/brandcast-templates-openapi.yml,
+  openapi/brandcast-websites-openapi.yml, openapi/brandcast-salesforce-openapi.yml
+  (derived from the Brandcast Swagger 1.2 declarations at
+  https://s3.amazonaws.com/apidoc.brandcast-prod.io/)
+status: candidate
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: api-key
+  verified: derived
+  note: >-
+    Brandcast ships NO MCP server — neither a hosted remote endpoint nor a
+    local stdio package. Searched: the developer portal
+    (https://developer.brandcast.io/, a single static Swagger UI page with no
+    MCP mention), the Brandcast GitHub organization (40 repos, all forks of
+    third-party JS libraries), and the npm registry (the only "brandcast"
+    matches — @brandcast_app/cozi-mcp-server — belong to BrandCast-Signage, a
+    DIFFERENT company, and are not Brandcast's). The tools below are a
+    CANDIDATE surface derived by this pipeline from the provider's own
+    published operations. No MCPServer pointer is emitted in apis.yml, because
+    the provider serves no MCP surface.
+server:
+  name: brandcast
+  description: >-
+    Candidate MCP tool surface for the Brandcast API — programmatic Design
+    Studio actions: list templates, create a website from a template, read and
+    update website content, manage the media library, publish/unpublish and
+    export websites, and configure Salesforce tracking.
+  transport: null
+  base_url: https://api.brandcast-prod.io/v1
+authentication:
+  type: api-key
+  header: x-api-key
+  note: >-
+    Every operation requires an x-api-key header issued by Brandcast and tied
+    to the developer's Brandcast account, sent over HTTPS. Three export
+    operations additionally accept an Authorization JWT plus an x-account-id
+    account-context header, documented as "only required when called by Design
+    Studio".
+tool_count: 26
+tools:
+- name: get_account_info
+  rest: getAccountInfo
+  method: GET
+  path: /account
+  description: Returns account information for this Brandcast account.
+- name: get_templates
+  rest: getTemplates
+  method: GET
+  path: /templates
+  description: Returns templates for this Brandcast account.
+- name: get_template
+  rest: getTemplate
+  method: GET
+  path: /templates/{templateId}
+  description: Returns data for specified template.
+- name: get_template_content
+  rest: getTemplateContent
+  method: GET
+  path: /templates/{templateId}/content
+  description: >-
+    Returns content for specified template; filterable by name, paginated with
+    limit/offset.
+- name: get_template_media_library
+  rest: getTemplateMediaLibrary
+  method: GET
+  path: /templates/{templateId}/medialibrary
+  description: Returns template's media library.
+- name: get_websites
+  rest: getWebsites
+  method: GET
+  path: /websites
+  description: Returns websites for this Brandcast account.
+- name: create_website
+  rest: createWebsite
+  method: POST
+  path: /websites
+  description: Create website from template.
+- name: get_website
+  rest: getWebsite
+  method: GET
+  path: /websites/{websiteId}
+  description: Get website.
+- name: update_website
+  rest: updateWebsite
+  method: PUT
+  path: /websites/{websiteId}
+  description: Update website.
+- name: delete_website
+  rest: deleteWebsite
+  method: DELETE
+  path: /websites/{websiteId}
+  description: Delete website.
+- name: get_website_content
+  rest: getWebsiteContent
+  method: GET
+  path: /websites/{websiteId}/content
+  description: >-
+    Returns content for specified website; filterable by name, paginated with
+    limit/offset.
+- name: update_website_content
+  rest: updateWebsiteContent
+  method: PUT
+  path: /websites/{websiteId}/content/{contentId}
+  description: >-
+    Updates content for specified website. The JSON body depends on the type of
+    content being updated (text, embed, images, video).
+- name: get_website_media_library
+  rest: getWebsiteMediaLibrary
+  method: GET
+  path: /websites/{websiteId}/medialibrary
+  description: Returns website's media library.
+- name: add_to_website_media_library
+  rest: addToWebsiteMediaLibrary
+  method: POST
+  path: /websites/{websiteId}/medialibrary
+  description: Add video/youtube or video/vimeo media to the website media library.
+- name: upload_to_website_media_library
+  rest: uploadToWebsiteMediaLibrary
+  method: POST
+  path: /websites/{websiteId}/medialibrary/upload
+  description: >-
+    Returns a media ID and an S3 presigned URL to upload images, video, PDFs or
+    ZIP files to.
+- name: get_publish_jobs
+  rest: getPublishJobs
+  method: GET
+  path: /websites/{websiteId}/publish
+  description: Get website publishing history.
+- name: create_publish_job
+  rest: createPublishJob
+  method: POST
+  path: /websites/{websiteId}/publish
+  description: >-
+    Publish website. Creates a job that initiates and monitors publishing and
+    returns a publishId to poll.
+- name: get_publish_job
+  rest: getPublishJob
+  method: GET
+  path: /websites/{websiteId}/publish/{publishId}
+  description: Get status of publishing website.
+- name: unpublish_website
+  rest: unpublishWebsite
+  method: POST
+  path: /websites/{websiteId}/unpublish
+  description: Unpublish website.
+- name: create_export_job
+  rest: createExportJob
+  method: POST
+  path: /websites/{websiteId}/publish/{publishId}/export
+  description: >-
+    Starts an export job which ZIPs all HTML and assets for this publish and
+    provides them for download via an S3 signed URL.
+- name: get_export_job
+  rest: getExportJob
+  method: GET
+  path: /websites/{websiteId}/publish/{publishId}/export/{fileName}
+  description: Get status of exporting a publish.
+- name: get_export_list
+  rest: getExportList
+  method: GET
+  path: /websites/{websiteId}/export
+  description: Get a list of exports for this website.
+- name: protect_website
+  rest: protectWebsite
+  method: PUT
+  path: /websites/{websiteId}/protection
+  description: Add or remove password protection on a website.
+- name: get_salesforce_tracking
+  rest: getTracking
+  method: GET
+  path: /salesforce/tracking/{websiteId}
+  description: Returns Salesforce tracking configuration for this website.
+- name: put_salesforce_tracking
+  rest: putTracking
+  method: PUT
+  path: /salesforce/tracking/{websiteId}
+  description: Creates or updates a collection of Salesforce tracking configurations.
+- name: delete_salesforce_tracking
+  rest: deleteTracking
+  method: DELETE
+  path: /salesforce/tracking/{websiteId}
+  description: Disables Salesforce tracking for this website.

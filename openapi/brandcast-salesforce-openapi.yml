@@ -1,0 +1,125 @@
+# generated: '2026-08-13'
+# method: derived
+# source: openapi/_original/salesforce.json (Brandcast Swagger 1.2 declaration published at https://s3.amazonaws.com/apidoc.brandcast-prod.io/salesforce.json, referenced by the Swagger UI on https://developer.brandcast.io/)
+openapi: 3.1.0
+info:
+  title: Brandcast Salesforce API
+  version: 1.0.0
+  description: Salesforce tracking configuration for Brandcast websites, used by the Brandcast Salesforce
+    app to produce personalized, trackable sites.
+  contact:
+    name: Brandcast API
+    url: https://developer.brandcast.io/
+servers:
+- url: https://api.brandcast-prod.io/v1
+  description: Brandcast production API
+externalDocs:
+  description: Brandcast API developer portal
+  url: https://developer.brandcast.io/
+tags:
+- name: Salesforce
+security:
+- apiKeyHeader: []
+paths:
+  /salesforce/tracking/{websiteId}:
+    get:
+      summary: Get Tracking
+      description: Returns Tracking for this website.
+      operationId: getTracking
+      tags:
+      - Salesforce
+      parameters:
+      - name: websiteId
+        in: path
+        description: Website ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Missing or invalid API key. The Brandcast API gateway answers unauthenticated requests
+            with {"message":"Missing Authentication Token"}.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Create or update Tracking
+      description: Creates or updates a collection of Tracking configurations for this website. For details
+        of the Tracking JSON, refer to Salesforce App Features.
+      operationId: putTracking
+      tags:
+      - Salesforce
+      parameters:
+      - name: websiteId
+        in: path
+        description: Website ID
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: A collection of Tracking configurations.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Missing or invalid API key. The Brandcast API gateway answers unauthenticated requests
+            with {"message":"Missing Authentication Token"}.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Disable Tracking
+      description: Disables the Tracking for this website.
+      operationId: deleteTracking
+      tags:
+      - Salesforce
+      parameters:
+      - name: websiteId
+        in: path
+        description: Website ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Missing or invalid API key. The Brandcast API gateway answers unauthenticated requests
+            with {"message":"Missing Authentication Token"}.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key issued by Brandcast and tied to the developer's Brandcast account. Must be
+        sent over HTTPS.
+  schemas:
+    Error:
+      type: object
+      description: Error envelope returned by the Brandcast API gateway.
+      properties:
+        message:
+          type: string

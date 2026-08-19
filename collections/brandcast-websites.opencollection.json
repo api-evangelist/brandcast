@@ -1,0 +1,512 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brandcast Websites API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Websites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get websites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/websites"
+          },
+          "docs": "Returns websites for this Brandcast account."
+        },
+        {
+          "info": {
+            "name": "Create website from template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brandcast-prod.io/v1/websites",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query",
+                "description": "Template ID"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Name of new website"
+              },
+              {
+                "name": "subdomain",
+                "value": "",
+                "type": "query",
+                "description": "Subdomain for new website"
+              },
+              {
+                "name": "newId",
+                "value": "",
+                "type": "query",
+                "description": "Optional new website ID"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Optional description for new website"
+              }
+            ]
+          },
+          "docs": "Creates website from specified template and returns data for the newly created website. However, the website won't be available on the Internet until it's explicitly published."
+        },
+        {
+          "info": {
+            "name": "Get website",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              }
+            ]
+          },
+          "docs": "Returns data for specified website."
+        },
+        {
+          "info": {
+            "name": "Update website",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a limited set of fields for a Website. Writable fields: description."
+        },
+        {
+          "info": {
+            "name": "Delete website",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              }
+            ]
+          },
+          "docs": "Deletes specified website, which means removing it from the Internet if it's already been published."
+        },
+        {
+          "info": {
+            "name": "Get website content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/content",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filters the result by name"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated.  Optional comma delimited list of tags to filter content by"
+              },
+              {
+                "name": "filterLockedContent",
+                "value": "",
+                "type": "query",
+                "description": "Enables/Disables the Locked Content Filter.  Defaults to true."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the size of the result set."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "If the response value next-offset exists, provide the value here to get the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns content for specified website. Use the optional name parameter to filter content by name."
+        },
+        {
+          "info": {
+            "name": "Update website content",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/content/:contentId",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              },
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path",
+                "description": "Content ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates content for specified website. The JSON body depends on the type of content being updated (e.g., text, embed, images, video, etc.), which is known by getting the website's content."
+        },
+        {
+          "info": {
+            "name": "Get website media library",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/medialibrary",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              }
+            ]
+          },
+          "docs": "Returns website's media library."
+        },
+        {
+          "info": {
+            "name": "Add to website media library",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/medialibrary",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Supported media are video/youtube and video/vimeo. Subsequently, once the media has been added to S3, the media ID can be used to update content in the website."
+        },
+        {
+          "info": {
+            "name": "Upload to website media library",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/medialibrary/upload",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              },
+              {
+                "name": "fileName",
+                "value": "",
+                "type": "query",
+                "description": "Media file name"
+              }
+            ]
+          },
+          "docs": "Returns a media ID for the media and an S3 presigned URL to upload the media content to. Supported media are images, video, PDFs, and ZIP files. Subsequently, once the media has been uploaded to S3, the media ID can be used to update content in the website."
+        },
+        {
+          "info": {
+            "name": "Get website publishing history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/publish",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              }
+            ]
+          },
+          "docs": "Returns list of publishing jobs for specified website."
+        },
+        {
+          "info": {
+            "name": "Publish website",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/publish",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publishing puts the website on the Internet. This API creates a job that initiates and monitors the publishing process. Returns information about publishing the website, e.g., publishId, publishing status, etc. Then the website's publishing status can be polled via the publishId that's returned."
+        },
+        {
+          "info": {
+            "name": "Get status of publishing website",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/publish/:publishId",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              },
+              {
+                "name": "publishId",
+                "value": "",
+                "type": "path",
+                "description": "Publish ID"
+              }
+            ]
+          },
+          "docs": "Returns information about publishing the website, e.g., publishing status."
+        },
+        {
+          "info": {
+            "name": "Unpublish website",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/unpublish",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              }
+            ]
+          },
+          "docs": "Removes specified website from the Internet and returns data for unpublished website."
+        },
+        {
+          "info": {
+            "name": "Export website",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/publish/:publishId/export",
+            "headers": [
+              {
+                "name": "x-account-id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              },
+              {
+                "name": "publishId",
+                "value": "",
+                "type": "path",
+                "description": "An existing publish ID"
+              },
+              {
+                "name": "fileName",
+                "value": "",
+                "type": "query",
+                "description": "The preferred name for the ZIP file."
+              }
+            ]
+          },
+          "docs": "Starts an export job which will ZIP up all HTML and assets for this publish and provide them for download via an S3 signed URL.  If the file name already exists, it will be modified like filename(1)."
+        },
+        {
+          "info": {
+            "name": "Get status of exporting a publish",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/publish/:publishId/export/:fileName",
+            "headers": [
+              {
+                "name": "x-account-id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              },
+              {
+                "name": "publishId",
+                "value": "",
+                "type": "path",
+                "description": "An existing publish ID"
+              },
+              {
+                "name": "fileName",
+                "value": "",
+                "type": "path",
+                "description": "The name for the ZIP file."
+              }
+            ]
+          },
+          "docs": "Returns information about exporting this publish, e.g., status, signed URL.  Calling this API will also refresh the signed URL."
+        },
+        {
+          "info": {
+            "name": "Get a list of exports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/export",
+            "headers": [
+              {
+                "name": "x-account-id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              }
+            ]
+          },
+          "docs": "Returns a list of exports for this website."
+        },
+        {
+          "info": {
+            "name": "Add or remove password protection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.brandcast-prod.io/v1/websites/:websiteId/protection",
+            "params": [
+              {
+                "name": "websiteId",
+                "value": "",
+                "type": "path",
+                "description": "Website ID"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Adds password protection to specified website if optional username and password are specified. Otherwise, removes password protection if they're not."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

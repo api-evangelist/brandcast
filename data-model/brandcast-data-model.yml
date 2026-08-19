@@ -1,0 +1,154 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/brandcast-account-openapi.yml, openapi/brandcast-templates-openapi.yml,
+  openapi/brandcast-websites-openapi.yml, openapi/brandcast-salesforce-openapi.yml
+note: >-
+  Derived from path structure and id-reference parameters. Brandcast's Swagger
+  1.2 declarations define only ONE model (CustomVars) and no response schemas,
+  so entity ATTRIBUTES are not published anywhere — the graph below is
+  reconstructed from resource paths and the identifiers the provider names in
+  its own parameter descriptions. Field lists are therefore deliberately empty
+  rather than invented.
+entity_count: 9
+entities:
+- name: Account
+  path: /account
+  id_field: null
+  description: The Brandcast account a set of API credentials is tied to. Read-only, singleton.
+  operations: [getAccountInfo]
+  fields_published: false
+- name: Template
+  path: /templates/{templateId}
+  id_field: templateId
+  description: >-
+    A Brandcast Design Studio template. Read-only over the API and the required
+    input to creating a website.
+  operations: [getTemplates, getTemplate]
+  fields_published: false
+- name: TemplateContent
+  path: /templates/{templateId}/content
+  id_field: null
+  description: >-
+    Content items belonging to a template, filterable by name and paginated
+    with limit/offset.
+  operations: [getTemplateContent]
+  fields_published: false
+- name: Website
+  path: /websites/{websiteId}
+  id_field: websiteId
+  description: >-
+    A Brandcast website, created from a Template. Full CRUD plus
+    password-protection control.
+  operations: [getWebsites, createWebsite, getWebsite, updateWebsite, deleteWebsite, protectWebsite]
+  fields_published: false
+  known_create_inputs: [templateId, name, subdomain, newId, description]
+- name: WebsiteContent
+  path: /websites/{websiteId}/content/{contentId}
+  id_field: contentId
+  description: >-
+    An individual content item on a website. The update body varies by content
+    type (text, embed, images, video), which is discovered by reading the
+    website's content first.
+  operations: [getWebsiteContent, updateWebsiteContent]
+  fields_published: false
+- name: MediaAsset
+  path: /websites/{websiteId}/medialibrary
+  id_field: mediaId
+  description: >-
+    An item in a website's or template's media library. Created either by
+    reference (video/youtube, video/vimeo) or by requesting a presigned S3 URL
+    and uploading bytes; the returned media ID is then used to update website
+    content.
+  operations: [getWebsiteMediaLibrary, addToWebsiteMediaLibrary, uploadToWebsiteMediaLibrary, getTemplateMediaLibrary]
+  fields_published: false
+- name: PublishJob
+  path: /websites/{websiteId}/publish/{publishId}
+  id_field: publishId
+  description: >-
+    An asynchronous job that puts a website on the Internet. Created by POST,
+    then polled for status. Accepts an optional CustomVars body.
+  operations: [getPublishJobs, createPublishJob, getPublishJob, unpublishWebsite]
+  fields_published: false
+- name: ExportJob
+  path: /websites/{websiteId}/publish/{publishId}/export/{fileName}
+  id_field: fileName
+  description: >-
+    An asynchronous job that ZIPs the HTML and assets of one publish and
+    delivers them via an S3 signed URL. Keyed by file name, which the API
+    disambiguates as filename(1) on collision.
+  operations: [createExportJob, getExportJob, getExportList]
+  fields_published: false
+- name: SalesforceTracking
+  path: /salesforce/tracking/{websiteId}
+  id_field: websiteId
+  description: >-
+    A collection of Salesforce tracking configurations attached to one website,
+    used by the Brandcast Salesforce app for personalized, trackable sites.
+  operations: [getTracking, putTracking, deleteTracking]
+  fields_published: false
+relationships:
+- from: Website
+  to: Template
+  type: belongs_to
+  via: templateId
+  evidence: createWebsite takes templateId as a required query parameter ("Create website from template").
+- from: Template
+  to: TemplateContent
+  type: has_many
+  via: templateId
+- from: Template
+  to: MediaAsset
+  type: has_many
+  via: templateId
+- from: Website
+  to: WebsiteContent
+  type: has_many
+  via: websiteId
+- from: Website
+  to: MediaAsset
+  type: has_many
+  via: websiteId
+- from: Website
+  to: PublishJob
+  type: has_many
+  via: websiteId
+- from: PublishJob
+  to: ExportJob
+  type: has_many
+  via: publishId
+- from: Website
+  to: SalesforceTracking
+  type: has_one
+  via: websiteId
+- from: Account
+  to: Website
+  type: has_many
+  via: x-api-key (account is implicit in the credential, not a path segment)
+- from: Account
+  to: Template
+  type: has_many
+  via: x-api-key (account is implicit in the credential, not a path segment)
+- from: WebsiteContent
+  to: MediaAsset
+  type: belongs_to
+  via: mediaId
+  evidence: >-
+    "once the media has been added to S3, the media ID can be used to update
+    content in the website" — addToWebsiteMediaLibrary /
+    uploadToWebsiteMediaLibrary notes.
+schemas_published:
+- name: CustomVars
+  source: openapi/_original/websites.json
+  description: >-
+    The only model Brandcast defines. A single property `key` of type
+    arbitraryJSON, passed as the optional body of createPublishJob.
+gaps:
+- >-
+  No response schemas are published for any of the 26 operations, so no entity
+  attribute is discoverable from the contract. An agent can learn the shape of
+  a website, a content item or a publish job only by calling the API with a
+  live key.
+- >-
+  ID formats are undocumented — there is no prefix convention, no length and no
+  type stated for templateId, websiteId, contentId, publishId or mediaId.

@@ -1,4 +1,4 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
@@ -7,6 +7,17 @@ hosts:
   tls_version: TLSv1.3
   cert_expires: Dec 31 23:59:59 2026 GMT
   hsts: null
+- host: developer.brandcast.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec 18 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.brandcast-prod.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 12 23:59:59 2026 GMT
+  hsts: null
 domains:
 - domain: brandcast.com
   dnssec: false
@@ -14,3 +25,8 @@ domains:
   spf: true
   dmarc: true
   dmarc_policy: quarantine
+- domain: brandcast.io
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

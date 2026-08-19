@@ -1,0 +1,23 @@
+{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "basePath": "https://s3.amazonaws.com/apidoc.brandcast-prod.io",
+    "apis": [
+        {
+            "path": "/account.{format}",
+            "description": "Account"
+        },
+        {
+            "path": "/salesforce.{format}",
+            "description": "Salesforce"
+        },
+        {
+            "path": "/templates.{format}",
+            "description": "Templates"
+        },
+        {
+            "path": "/websites.{format}",
+            "description": "Websites"
+        }
+    ]
+}

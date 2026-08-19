@@ -1,0 +1,146 @@
+{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "basePath": "https://api.brandcast-prod.io/v1",
+    "produces": ["application/json"],
+    "apis": [
+    	{
+        	"path": "/templates",
+        	"operations": [{
+            	"method": "GET",
+            	"summary": "Get templates",
+            	"notes": "Returns templates for this Brandcast account.",
+            	"nickname": "getTemplates",
+            	"parameters": [{
+                	"name": "x-api-key",
+                	"description": "API key",
+                	"required": true,
+                	"allowMultiple": false,
+                	"dataType": "string",
+                	"paramType": "header"
+            	}]
+        	}]
+    	},        
+        {
+            "path": "/templates/{templateId}",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get template",
+                "notes": "Returns data for specified template.",
+                "nickname": "getTemplate",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "templateId",
+                        "description": "Template ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        },        
+        {
+            "path": "/templates/{templateId}/content",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get template content",
+                "notes": "Returns content for specified template. Use the optional <b>name</b> parameter to filter content by name.",
+                "nickname": "getTemplateContent",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "templateId",
+                        "description": "Template ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    },
+                    {
+                        "name": "name",
+                        "description": "Filters the result by name",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "tags",
+                        "description": "<b>Deprecated.</b>  Optional comma delimited list of tags to filter content by",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "filterLockedContent",
+                        "description": "Enables/Disables the Locked Content Filter.  Defaults to <b>true<\/b>.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "limit",
+                        "description": "Limits the size of the result set.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    },
+                    {
+                        "name": "offset",
+                        "description": "If the response value next-offset exists, provide the value here to get the next page of results.",
+                        "required": false,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    }
+                ]
+            }]
+        },        
+        {
+            "path": "/templates/{templateId}/medialibrary",
+            "operations": [{
+                "method": "GET",
+                "summary": "Get template media library",
+                "notes": "Returns template's media library.",
+                "nickname": "getTemplateMediaLibrary",
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "description": "API key",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "name": "templateId",
+                        "description": "Template ID",
+                        "required": true,
+                        "allowMultiple": false,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }
+                ]
+            }]
+        }
+    ]
+}

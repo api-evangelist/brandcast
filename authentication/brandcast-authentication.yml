@@ -1,28 +1,84 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
 source: https://developer.brandcast.io/
 docs: https://developer.brandcast.io/
+spec_source: >-
+  openapi/_original/{account,templates,websites,salesforce}.json — the Brandcast
+  Swagger 1.2 declarations published at
+  https://s3.amazonaws.com/apidoc.brandcast-prod.io/ and loaded by the Swagger
+  UI on developer.brandcast.io
 summary:
   types:
   - apiKey
+  - http
   api_key_in:
   - header
   oauth2_flows: []
+  openid_connect: false
+  mutual_tls: false
 schemes:
-- name: apiKey
+- name: apiKeyHeader
   type: apiKey
   in: header
   parameter_name: x-api-key
   transport: https-only
+  required_on: all 26 published operations
   description: >-
     Brandcast API requests are authenticated with an API key sent in the
-    x-api-key HTTP header over HTTPS. Keys are issued by Brandcast and are
-    tied to the developer's Brandcast account. No OAuth or OpenID Connect
-    flow is documented for the public API.
+    x-api-key HTTP header over HTTPS. Keys are issued by Brandcast and are tied
+    to the developer's Brandcast account. This is the only authentication a
+    third-party developer can use.
   sources:
   - https://developer.brandcast.io/
+  - openapi/_original/websites.json
+- name: designStudioJWT
+  type: http
+  scheme: bearer
+  bearer_format: JWT
+  in: header
+  parameter_name: Authorization
+  required: false
+  required_on:
+  - createExportJob
+  - getExportJob
+  - getExportList
+  companion_header:
+    name: x-account-id
+    description: >-
+      "The account context for this action. Required when using Authorization
+      header." Supplies which Brandcast account the JWT is acting for.
+  description: >-
+    "A valid JWT. Only required when called by Design Studio." An internal
+    first-party credential accepted on the three website export operations
+    alongside the API key. Brandcast publishes no authorization server, token
+    endpoint, scope set, JWT issuer, audience or key-rotation guidance for it,
+    so it is not usable by third-party developers — recorded because it appears
+    verbatim in the provider's own contract.
+  sources:
+  - openapi/_original/websites.json
+key_management:
+  issuance: vendor-issued
+  self_service: false
+  rotation_policy_published: false
+  expiry_published: false
+  key_prefix_published: false
+  note: >-
+    Keys are provisioned by Brandcast and bound to a Brandcast account. No
+    self-service key creation, rotation, scoping or revocation flow is
+    documented, and no key prefix convention is published.
+scopes:
+  supported: false
+  note: >-
+    The API has no scope or permission model — a key is all-or-nothing across
+    all 26 operations, including destructive ones (deleteWebsite,
+    unpublishWebsite). No scopes/ artifact is emitted, per the pipeline's
+    OAuth-only rule for that artifact.
+mfa: null
 notes: >-
-  Derived by searching the Brandcast developer documentation
-  (developer.brandcast.io, mirrored at api.brandcast.io). The provider does
-  not publish an OpenAPI/Swagger specification, so this profile is captured
-  from the documented authentication guidance rather than derived from a spec.
+  Round 2 upgrade. The prior round recorded the x-api-key scheme correctly from
+  the developer portal prose but stated that no specification is published;
+  that is now superseded — Brandcast does publish a machine-readable contract
+  (Swagger 1.2) at s3.amazonaws.com/apidoc.brandcast-prod.io, and the auth
+  model above is confirmed against it parameter by parameter. The second scheme
+  (Design Studio JWT + x-account-id) was found only in that contract and does
+  not appear in the portal prose at all.

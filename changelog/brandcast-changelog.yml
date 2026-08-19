@@ -1,0 +1,76 @@
+generated: '2026-08-13'
+method: searched
+source: https://support.timesites.com/en/collections/1971279-product-releases-at-sites
+docs: https://support.timesites.com/en/collections/1971279-product-releases-at-sites
+scheme: product-release-notes
+api_specific: false
+current_version: null
+note: >-
+  Brandcast publishes NO API changelog. The provider's only dated change record
+  is the "Product Releases at SITES" collection in the Sites support centre —
+  product/UI release notes for the Design Studio application, not the API. It is
+  captured here because it is the provider's real, dated changelog surface; the
+  API contract itself has not changed since 2021-07-01 (see
+  lifecycle/brandcast-lifecycle.yml). 11 articles, one author, most recent
+  2025-07-25.
+entry_count: 11
+entries:
+- date: '2025-07-25'
+  title: Product Release Notes - New Default Settings
+  url: https://support.timesites.com/en/articles/11853622-product-release-notes-new-default-settings-07-25-2025
+  breaking: unknown
+- date: '2024-12-04'
+  title: New metric added - Video Views Tracking
+  url: https://support.timesites.com/en/articles/10099608-new-metric-added-video-views-tracking-2024-12-04
+  breaking: false
+- date: '2024-11-20'
+  title: Product Release Notes - Analytics Enhancements
+  url: https://support.timesites.com/en/articles/9801218-product-release-notes-analytics-enhancements-2024-11-20
+  breaking: false
+- date: null
+  date_in_title: 10-01-2024
+  date_ambiguous: true
+  title: Product Release Notes 10-01-2024
+  url: https://support.timesites.com/en/articles/9875827-product-release-notes-10-01-2024
+  breaking: unknown
+- date: null
+  date_in_title: 09-03-2024
+  date_ambiguous: true
+  title: Product Release Notes 09-03-2024
+  url: https://support.timesites.com/en/articles/9777539-product-release-notes-09-03-2024
+  breaking: unknown
+- date: null
+  date_in_title: 07-02-2024
+  date_ambiguous: true
+  title: Product Release Notes 07-02-2024
+  url: https://support.timesites.com/en/articles/9524408-product-release-notes-07-02-2024
+  breaking: unknown
+- date: '2024-01-17'
+  date_in_title: 17-01-2024
+  title: Product Release Notes 17-01-2024
+  url: https://support.timesites.com/en/articles/8663974-product-release-notes-17-01-2024
+  breaking: unknown
+- date: '2023-12-05'
+  title: Product Release Notes 12-05-2023
+  url: https://support.timesites.com/en/articles/8646579-product-release-notes-12-05-2023
+  breaking: unknown
+- date: '2023-11-28'
+  title: Product Release Notes 11-28-2023
+  url: https://support.timesites.com/en/articles/8614843-product-release-notes-11-28-2023
+  breaking: unknown
+- date: null
+  title: 'New Product Experience: My SITES + Content Studio!'
+  url: https://support.timesites.com/en/articles/4435913-new-product-experience-my-sites-content-studio
+  breaking: unknown
+- date: null
+  title: 'Beta Instructions: Content Studio'
+  url: https://support.timesites.com/en/articles/4303997-beta-instructions-content-studio
+  breaking: unknown
+notes: >-
+  Dates are read from the article slugs the provider publishes. Brandcast is
+  INCONSISTENT about date order in its own titles — 11-28-2023 and 07-25-2025
+  can only be MM-DD-YYYY, while 17-01-2024 can only be DD-MM-YYYY. Where the
+  numbers are ambiguous (07-02-2024, 09-03-2024, 10-01-2024) `date` is left null
+  and the raw string is preserved in `date_in_title` with
+  `date_ambiguous: true`, rather than guessing. `breaking` is recorded as
+  unknown wherever the release note was not opened and read.
