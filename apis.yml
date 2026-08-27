@@ -51,55 +51,92 @@ tags:
 - Web Design
 - Brand Management
 apis:
-- name: Brandcast API
-  description: >-
-    The Brandcast API lets developers programmatically perform Design Studio
-    actions across 26 operations: list and read templates, create a website
-    from a template, read and update website content, add or upload media via
-    S3 presigned URLs, publish and unpublish sites as asynchronous jobs, export
-    a publish as a ZIP, password-protect a site, and configure the Salesforce
-    tracking that makes Brandcast sites personalized and trackable. Requests
-    are authenticated with an API key in the x-api-key header, sent over HTTPS.
-    The contract is published as Swagger 1.2 at
-    s3.amazonaws.com/apidoc.brandcast-prod.io and rendered by Swagger UI 1.x on
-    developer.brandcast.io; it has not changed since 2021-07-01.
+- aid: brandcast:brandcast-account-api
+  name: Brandcast Account API
+  description: The Account API from Brandcast — 1 operation(s) for account.
   humanURL: https://developer.brandcast.io/
   baseURL: https://api.brandcast-prod.io
   tags:
-  - No-Code
-  - Website Builder
-  - Content Management
+  - Account
   properties:
+  - type: OpenAPI
+    url: openapi/brandcast-account-api-openapi.yml
   - type: Documentation
     url: https://developer.brandcast.io/
   - type: APIReference
     url: https://developer.brandcast.io/
   - type: Authentication
     url: authentication/brandcast-authentication.yml
-  - type: OpenAPI
-    url: openapi/brandcast-websites-openapi.yml
-  - type: OpenAPI
-    url: openapi/brandcast-templates-openapi.yml
-  - type: OpenAPI
-    url: openapi/brandcast-salesforce-openapi.yml
-  - type: OpenAPI
-    url: openapi/brandcast-account-openapi.yml
   - type: Swagger
     url: openapi/_original/resources.json
-  - type: Overlay
-    url: overlays/brandcast-websites-overlay.yaml
-  - type: Overlay
-    url: overlays/brandcast-templates-overlay.yaml
-  - type: Overlay
-    url: overlays/brandcast-salesforce-overlay.yaml
-  - type: Overlay
-    url: overlays/brandcast-account-overlay.yaml
+- aid: brandcast:brandcast-salesforce-api
+  name: Brandcast Salesforce API
+  description: The Salesforce API from Brandcast — 1 operation(s) for salesforce.
+  humanURL: https://developer.brandcast.io/
+  baseURL: https://api.brandcast-prod.io
+  tags:
+  - Salesforce
+  properties:
+  - type: OpenAPI
+    url: openapi/brandcast-salesforce-api-openapi.yml
+  - type: Documentation
+    url: https://developer.brandcast.io/
+  - type: APIReference
+    url: https://developer.brandcast.io/
+  - type: Authentication
+    url: authentication/brandcast-authentication.yml
+  - type: Swagger
+    url: openapi/_original/resources.json
+- aid: brandcast:brandcast-templates-api
+  name: Brandcast Templates API
+  description: The Templates API from Brandcast — 4 operation(s) for templates.
+  humanURL: https://developer.brandcast.io/
+  baseURL: https://api.brandcast-prod.io
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/brandcast-templates-api-openapi.yml
+  - type: Documentation
+    url: https://developer.brandcast.io/
+  - type: APIReference
+    url: https://developer.brandcast.io/
+  - type: Authentication
+    url: authentication/brandcast-authentication.yml
+  - type: Swagger
+    url: openapi/_original/resources.json
+- aid: brandcast:brandcast-websites-api
+  name: Brandcast Websites API
+  description: The Websites API from Brandcast — 13 operation(s) for websites.
+  humanURL: https://developer.brandcast.io/
+  baseURL: https://api.brandcast-prod.io
+  tags:
+  - Websites
+  properties:
+  - type: OpenAPI
+    url: openapi/brandcast-websites-api-openapi.yml
+  - type: Documentation
+    url: https://developer.brandcast.io/
+  - type: APIReference
+    url: https://developer.brandcast.io/
+  - type: Authentication
+    url: authentication/brandcast-authentication.yml
+  - type: Swagger
+    url: openapi/_original/resources.json
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/brandcast-websites-overlay.yaml
+- type: Overlay
+  url: overlays/brandcast-templates-overlay.yaml
+- type: Overlay
+  url: overlays/brandcast-salesforce-overlay.yaml
+- type: Overlay
+  url: overlays/brandcast-account-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/brandcast-agentic-access.yml
 - type: DeveloperPortal
