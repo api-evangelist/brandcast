@@ -11,6 +11,18 @@ description: >-
   site content, authenticated with an API key sent in the x-api-key header
   over HTTPS. Brandcast's website product has since been rebranded as "Sites"
   and joined Vev; the developer API portal remains at developer.brandcast.io.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unpublished
   onboarding: vendor-issued
