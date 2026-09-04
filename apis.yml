@@ -35,6 +35,7 @@ accessModel:
   - authentication
   - https://developer.brandcast.io/
   - plans/brandcast-plans-pricing.yml
+  - {url: 'https://www.brandcast.com', status: 302, note: 'declared website redirects to https://www.sites.design/ — a different registrable domain (brandcast.com -> sites.design), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
   generated: '2026-08-13'
   method: searched
   note: >-
