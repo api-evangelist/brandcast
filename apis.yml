@@ -54,6 +54,9 @@ x-tier-reason: swagger-1.2-contract-harvested
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-08-13'
+x-docs-platform: swagger-ui
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-20
 tags:
 - Company
 - Enterprise Software
