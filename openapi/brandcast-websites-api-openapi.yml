@@ -470,7 +470,7 @@ paths:
   /websites/{websiteId}/publish/{publishId}/export:
     post:
       summary: Export website
-      description: Starts an export job which will ZIP up all HTML and assets for this publish and provide them for download via an S3 signed URL.  If the file name already exists, it will be modified like filename(1).
+      description: Starts an export job which will ZIP up all HTML and assets for this publish and provide them for download via an S3 signed URL. If the file name already exists, it will be modified like filename(1).
       operationId: createExportJob
       tags:
       - Websites
@@ -520,7 +520,7 @@ paths:
   /websites/{websiteId}/publish/{publishId}/export/{fileName}:
     get:
       summary: Get status of exporting a publish
-      description: Returns information about exporting this publish, e.g., status, signed URL.  Calling this API will also refresh the signed URL.
+      description: Returns information about exporting this publish, e.g., status, signed URL. Calling this API will also refresh the signed URL.
       operationId: getExportJob
       tags:
       - Websites

@@ -1,0 +1,32 @@
+{
+  "provider": "brandcast",
+  "sources": [
+    "_original/brandcast-account-openapi.yml",
+    "_original/brandcast-salesforce-openapi.yml",
+    "_original/brandcast-templates-openapi.yml",
+    "_original/brandcast-websites-openapi.yml"
+  ],
+  "outputs": [
+    "brandcast-account-api-openapi.yml",
+    "brandcast-salesforce-api-openapi.yml",
+    "brandcast-templates-api-openapi.yml",
+    "brandcast-websites-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (4 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "brandcast-account-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "brandcast-salesforce-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "brandcast-templates-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "brandcast-websites-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "brandcast-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brandcast-salesforce-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brandcast-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brandcast-websites-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
