@@ -643,16 +643,16 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    CustomVars:
-      type: object
-      properties:
-        key: {}
     Error:
       type: object
       description: Error envelope returned by the Brandcast API gateway.
       properties:
         message:
           type: string
+    CustomVars:
+      type: object
+      properties:
+        key: {}
   securitySchemes:
     apiKeyHeader:
       type: apiKey
