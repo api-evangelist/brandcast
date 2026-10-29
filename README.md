@@ -64,6 +64,139 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Brandcast is a company surfaced as a portfolio company of shasta-ventures and added to the API Evangelist network as a stub for enrichment. Sector: enterprise-software. This profile is a lead awaiting the enrichment pipeline.
+Brandcast is a no-code digital customer experience and website platform, founded in 2013 and backed by Shasta Ventures, that fuses web design, content creation, and brand asset management into a single system. Business and marketing teams use its Design Studio to build and maintain branded websites, sales proposals, brochures, and content programs, with Salesforce integration for personalized, trackable sites. The Brandcast API opens the Design Studio to developers to create websites from templates and update site content, authenticated with an API key sent in the x-api-key header over HTTPS. Brandcast's website product has since been rebranded as "Sites" and joined Vev; the developer API portal remains at developer.brandcast.io.
 
-Backed by: shasta-ventures — https://www.brandcast.com
+**Areas:** Company · Enterprise Software · No-Code · Website Builder · Content Management · Digital Experience · Web Design · Brand Management
+
+## Brandcast on APIs.io
+
+Everything profiled for Brandcast is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/brandcast/](https://apis.io/providers/brandcast/)** — or go straight to one of the APIs or properties below.
+
+### APIs (4)
+
+- [Brandcast Account API](https://apis.io/apis/brandcast/brandcast-account-api/) — The Account API from Brandcast — 1 operation(s) for account.
+- [Brandcast Salesforce API](https://apis.io/apis/brandcast/brandcast-salesforce-api/) — The Salesforce API from Brandcast — 1 operation(s) for salesforce.
+- [Brandcast Templates API](https://apis.io/apis/brandcast/brandcast-templates-api/) — The Templates API from Brandcast — 4 operation(s) for templates.
+- [Brandcast Websites API](https://apis.io/apis/brandcast/brandcast-websites-api/) — The Websites API from Brandcast — 13 operation(s) for websites.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [brandcast](https://apis.io/servers/brandcast/brandcast/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Brandcast Agentic Access](https://apis.io/agentic-access/brandcast/brandcast-agentic-access/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Brandcast Account API](https://apis.io/collections/brandcast/open-brandcast-account/)
+- [Brandcast Salesforce API](https://apis.io/collections/brandcast/open-brandcast-salesforce/)
+- [Brandcast Templates API](https://apis.io/collections/brandcast/open-brandcast-templates/)
+- [Brandcast Websites API](https://apis.io/collections/brandcast/open-brandcast-websites/)
+
+#### Overlays (4)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Brandcast Account Overlay](https://apis.io/overlays/brandcast/brandcast-account-overlay/)
+- [Brandcast Salesforce Overlay](https://apis.io/overlays/brandcast/brandcast-salesforce-overlay/)
+- [Brandcast Templates Overlay](https://apis.io/overlays/brandcast/brandcast-templates-overlay/)
+- [Brandcast Websites Overlay](https://apis.io/overlays/brandcast/brandcast-websites-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Brandcast Authentication](https://apis.io/security/brandcast/brandcast-authentication/)
+- [Brandcast Domain Security](https://apis.io/security/brandcast/brandcast-domain-security/)
+- [Brandcast Trust Center](https://apis.io/security/brandcast/brandcast-trust-center/)
+- [Brandcast Vulnerability Disclosure](https://apis.io/security/brandcast/brandcast-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Brandcast Plans Pricing](https://apis.io/plans/brandcast/brandcast-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Brandcast Rate Limits](https://apis.io/rate-limits/brandcast/brandcast-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.brandcast.com)
+- [Documentation](https://developer.brandcast.io/)
+- [Getting started](https://tutorials.sites.design/)
+- [Support](https://support.timesites.com/en/)
+- [Terms of service](https://www.sites.design/terms/)
+- [Privacy policy](https://www.sites.design/privacy-policy/)
+- [GitHub](https://github.com/brandcast)
+
+## API Evangelist rating
+
+**Kin Score 46.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 54.8 |
+| Contract governance | 4.5 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 56.5 |
+| Access clarity | 27.6 |
+
+**Agent readiness 28.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 30.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/brandcast/](https://apis.io/providers/brandcast/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Brandcast: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/brandcast/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
